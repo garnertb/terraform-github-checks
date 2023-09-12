@@ -3,6 +3,11 @@ name: Verify GitHub Organization State
 on:
   workflow_dispatch:
 
+env:
+  GITHUB_APP_ID: ${{ secrets.TF_VAR_GITHUB_APP_ID}}
+  GITHUB_APP_INSTALLATION_ID: ${{ secrets.TF_VAR_APP_INSTALLATION_ID}}
+  GITHUB_APP_PEM_FILE: ${{ secrets.TF_VAR_APP_PEM_FILE }}
+
 # Permissions needed for reacting and adding comments for IssueOps commands
 permissions:
   pull-requests: write

@@ -37,8 +37,8 @@ jobs:
         id: app-token
         uses: getsentry/action-github-app-token@97c9e23528286821f97fba885c1b1123284b29cc # v2.0.0
         with:
-          app_id: ${{ secrets.GITHUB_APP_ID }}
-          private_key: ${{ secrets.GITHUB_APP_PEM_FILE }}
+          app_id: ${{ env.GITHUB_APP_ID }}
+          private_key: ${{ env.GITHUB_APP_PEM_FILE }}
 
       - name: Initialize Terraform
         id: init

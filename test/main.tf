@@ -13,9 +13,9 @@ module "github_org_checks" {
   source = "../modules/organization_checks"
   org_name = "garnertb-io"
   advanced_security_enabled_for_new_repositories = false
-  dependabot_alerts_enabled_for_new_repositories = false
+  dependabot_alerts_enabled_for_new_repositories = true
   dependabot_security_updates_enabled_for_new_repositories = false
-  dependency_graph_enabled_for_new_repositories = false
+  dependency_graph_enabled_for_new_repositories = true
   members_can_create_internal_repositories = false
   members_can_create_pages = true
   members_can_create_private_pages = true
@@ -38,6 +38,6 @@ module "github_org_checks" {
   secret_scanning_enabled_for_new_repositories = false
   secret_scanning_push_protection_enabled_for_new_repositories = false
   two_factor_requirement_enabled = false
-  web_commit_signoff_required = true
+  web_commit_signoff_required = false
 }
 

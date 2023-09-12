@@ -44,8 +44,8 @@ jobs:
         continue-on-error: false
         working-directory: ./test
         run: |
-          terraform plan -compact-warnings -input=false -json -out=plan.json
-      
+          terraform plan -compact-warnings -input=false -json
+          
       - name: parse json
         working-directory: ./test
         run: |

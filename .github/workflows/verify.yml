@@ -30,17 +30,17 @@ jobs:
       - name: Initialize Terraform
         id: init
         run: terraform init -no-color
-        working-directory: ./test
+        working-directory: ./examples/organization_checks
 
       - name: Run checks
         id: checks
         continue-on-error: false
-        working-directory: ./test
+        working-directory: ./examples/organization_checks
         run: |
           terraform plan -compact-warnings -input=false -json > plan.json
 
       - name: parse json
-        working-directory: ./test
+        working-directory: ./examples/organization_checks
         run: |
           cat plan.json | jq 'select(.["@message"] == "Warning: Check block assertion failed")'
      

@@ -1,3 +1,13 @@
+terraform {
+  required_version = ">=1.5.0"
+
+  required_providers {
+    github = {
+      source  = "integrations/github"
+      version = ">=5.35.0"
+    }
+  }
+}
 
 module "github_org_checks" {
   source = "../modules/organization_checks"
@@ -29,5 +39,9 @@ module "github_org_checks" {
   secret_scanning_push_protection_enabled_for_new_repositories = false
   two_factor_requirement_enabled = false
   web_commit_signoff_required = true
+
+  providers = {
+    github = github
+  }
 }
 

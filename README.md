@@ -1,6 +1,6 @@
 # terraform-github-validation
 
-A collection of modules that validate GitHub resource configurations in Terraform.
+A collection of modules used to validate GitHub resource configurations in Terraform.
 
 > **Note**:
 > Terraform Checks were released in Terraform 1.5.0.  This module requires Terraform 1.5.0 or later.

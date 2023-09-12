@@ -18,9 +18,17 @@ module "validate_github_org_config" {
 }
 ```
 
-## GitHub App Permission Scopes
+## GitHub Authentication and Permissions
+
+### Authenticating
+
+Follow authentication instructions from the [Terraform GitHub Provider](https://registry.terraform.io/providers/integrations/github/latest/docs#authentication) to authenticate with the GitHub API.
+
+### GitHub App
 
 If you are using a [GitHub App](https://docs.github.com/en/apps/creating-github-apps/about-creating-github-apps) to authenticate with the GitHub API, you will need to grant the following permission scopes:
 
-* `Administration`: read-only
-* `Members`: read-only
+| Permission  | Scope | Use |
+|---|---|---|
+|Administration  | `read-only` | Used to read the organization's settings. |
+|Members         | `read-only` | Used to read the organization's members.  |

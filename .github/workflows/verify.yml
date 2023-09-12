@@ -9,12 +9,6 @@ env:
   GITHUB_APP_PEM_FILE: ${{ secrets.TF_VAR_APP_PEM_FILE }}
   GITHUB_OWNER: garnertb-io
 
-# Permissions needed for reacting and adding comments for IssueOps commands
-permissions:
-  pull-requests: write
-  contents: write
-  checks: write
-
 jobs:
   verify-state:
     name: Verify state
@@ -22,7 +16,6 @@ jobs:
     timeout-minutes: 20
 
     steps:
-      # Checkout repository based on the ref provided by the branch-deploy step
       - name: Checkout
         id: checkout
         uses: actions/checkout@8e5e7e5ab8b370d6c329ec480221332ada57f0ab # 3.5.2

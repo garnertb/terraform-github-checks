@@ -50,7 +50,6 @@ jobs:
         continue-on-error: false
         working-directory: ./test
         run: |
-          set -o pipefail
           terraform plan -compact-warnings -input=false -json > plan.json
 
      

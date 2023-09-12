@@ -10,7 +10,7 @@ A collection of modules that validate GitHub resource configurations in Terrafor
 To validate a GitHub organization's configuration, call the module in your Terraform configuration and specify the configuration options you expect.  Checks for variables not explicitly set will assume the settings from GitHub are desirable.
 
 ```hcl
-module "github_organization_checks" {
+module "validate_github_org_config" {
   source = "garnertb/terraform-github-checks//modules/organization"
   org_name = "garnertb-io"
   advanced_security_enabled_for_new_repositories = false

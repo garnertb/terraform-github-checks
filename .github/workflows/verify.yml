@@ -3,11 +3,6 @@ name: Verify GitHub Organization State
 on:
   workflow_dispatch:
 
-env:
-  GITHUB_APP_ID: ${{ secrets.TF_VAR_GITHUB_APP_ID}}
-  GITHUB_APP_INSTALLATION_ID: ${{ secrets.TF_VAR_APP_INSTALLATION_ID}}
-  GITHUB_APP_PEM_FILE: ${{ secrets.TF_VAR_APP_PEM_FILE }}
-
 # Permissions needed for reacting and adding comments for IssueOps commands
 permissions:
   pull-requests: write
@@ -37,8 +32,8 @@ jobs:
         id: app-token
         uses: getsentry/action-github-app-token@97c9e23528286821f97fba885c1b1123284b29cc # v2.0.0
         with:
-          app_id: ${{ secrets.CASI_OPS_APP_ID }}
-          private_key: ${{ secrets.CASI_OPS_SECRET }}
+          app_id: ${{ secrets.GITHUB_APP_ID }}
+          private_key: ${{ secrets.GITHUB_APP_PEM_FILE }}
 
       - name: Initialize Terraform
         id: init

@@ -47,6 +47,7 @@ jobs:
           terraform plan -compact-warnings -input=false -json > plan.json
       
       - name: parse json
+        working-directory: ./test
         run: |
           cat plan.json | jq
      

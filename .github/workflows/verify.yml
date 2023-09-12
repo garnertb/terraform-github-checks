@@ -37,7 +37,7 @@ jobs:
         continue-on-error: false
         working-directory: ./examples/organization_checks
         run: |
-          terraform plan -compact-warnings -input=false -json > plan.json
+          terraform plan -compact-warnings -input=false -json | tee plan.json
 
       - name: parse json
         working-directory: ./examples/organization_checks

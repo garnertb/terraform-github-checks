@@ -14,7 +14,7 @@ provider "github" {
 }
 
 module "github_org_checks" {
-  source = "../../modules/organization"
+  source = "github.com/garnertb/terraform-github-checks"
   org_name = "garnertb-io"
   advanced_security_enabled_for_new_repositories = false
   dependabot_alerts_enabled_for_new_repositories = true

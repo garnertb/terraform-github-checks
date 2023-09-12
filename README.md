@@ -11,9 +11,16 @@ To validate a GitHub organization's configuration, call the module in your Terra
 
 ```hcl
 module "validate_github_org_config" {
-  source = "garnertb/terraform-github-checks//modules/organization"
+  source = "garnertb/terraform-github-checks"
   org_name = "garnertb-io"
   advanced_security_enabled_for_new_repositories = false
   dependabot_alerts_enabled_for_new_repositories = true
 }
 ```
+
+## GitHub App Permission Scopes
+
+If you are using a [GitHub App](https://docs.github.com/en/apps/creating-github-apps/about-creating-github-apps) to authenticate with the GitHub API, you will need to grant the following permission scopes:
+
+* `Administration`: read-only
+* `Members`: read-only

@@ -14,7 +14,7 @@ provider "github" {
 }
 
 module "github_org_checks" {
-  source = "../modules/organization"
+  source = "../../modules/organization"
   org_name = "garnertb-io"
   advanced_security_enabled_for_new_repositories = false
   dependabot_alerts_enabled_for_new_repositories = true
@@ -42,6 +42,6 @@ module "github_org_checks" {
   secret_scanning_enabled_for_new_repositories = false
   secret_scanning_push_protection_enabled_for_new_repositories = false
   two_factor_requirement_enabled = false
-  web_commit_signoff_required = false
+  web_commit_signoff_required = true
 }
 

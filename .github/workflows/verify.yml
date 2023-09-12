@@ -49,5 +49,5 @@ jobs:
       - name: parse json
         working-directory: ./test
         run: |
-          cat plan.json 
+          cat plan.json | jq 'select(.["@message"] == "Warning: Check block assertion failed")'
      

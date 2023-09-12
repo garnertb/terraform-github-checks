@@ -1,4 +1,3 @@
-GitHub App permissions:
+# terraform-github-checks
 
-Administration: read-only
-Members: read-only
+This Terraform module enables continuous validation of GitHub resources using Terraform [Checks](https://developer.hashicorp.com/terraform/tutorials/configuration-language/checks).

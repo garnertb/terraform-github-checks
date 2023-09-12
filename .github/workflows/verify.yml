@@ -1,0 +1,56 @@
+name: Verify GitHub Organization State
+
+on:
+  workflow_dispatch:
+
+env:
+  GITHUB_APP_ID: ${{ secrets.TF_VAR_GITHUB_APP_ID}}
+  GITHUB_APP_INSTALLATION_ID: ${{ secrets.TF_VAR_APP_INSTALLATION_ID}}
+  GITHUB_APP_PEM_FILE: ${{ secrets.TF_VAR_APP_PEM_FILE }}
+
+# Permissions needed for reacting and adding comments for IssueOps commands
+permissions:
+  pull-requests: write
+  contents: write
+  checks: write
+
+jobs:
+  verify-state:
+    name: Verify state
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      # Checkout repository based on the ref provided by the branch-deploy step
+      - name: Checkout
+        id: checkout
+        uses: actions/checkout@8e5e7e5ab8b370d6c329ec480221332ada57f0ab # 3.5.2
+
+      # Setup Terraform
+      - name: Setup Terraform
+        id: setup-terraform
+        uses: hashicorp/setup-terraform@633666f66e0061ca3b725c73b2ec20cd13a8fdd1 # 2.0.3
+        with:
+          terraform_version: 1.5.0
+
+      - name: Get App Token
+        id: app-token
+        uses: getsentry/action-github-app-token@97c9e23528286821f97fba885c1b1123284b29cc # v2.0.0
+        with:
+          app_id: ${{ secrets.CASI_OPS_APP_ID }}
+          private_key: ${{ secrets.CASI_OPS_SECRET }}
+
+      - name: Initialize Terraform
+        id: init
+        run: terraform init -no-color
+        working-directory: ./test
+
+      - name: Run checks
+        id: checks
+        continue-on-error: false
+        working-directory: ./test
+        run: |
+          set -o pipefail
+          terraform plan -compact-warnings -input=false -json > plan.json
+
+     
